@@ -1,0 +1,22 @@
+{
+    "name": "indicalabs/yii2-phone",
+    "description": "International telephone validator",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","international","phone"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Venu Narukulla",
+            "email": "venu.narukulla@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/intl-tel-input": ">=8.4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "indicalabs\\phone\\": ""
+        }
+    }
+}
