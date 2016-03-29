@@ -28,4 +28,4 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \indicalabs\phone\AutoloadExample::widget(); ?>```
+<?= \indicalabs\phone\IntTelWidget::widget(); ?>```
