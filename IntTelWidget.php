@@ -6,6 +6,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\jui\InputWidget;
 use yii\helpers\ArrayHelper;
+use yii\web\AssetBundle;
 /**
  * Class Phone
  
@@ -16,7 +17,7 @@ use yii\helpers\ArrayHelper;
  * @time 09:00am
  * @see https://github.com/twitter/typeahead.js
  */
-class IntTelWidget extends \yii\widgets\InputWidget
+class IntTelWidget extends yii\widgets\InputWidget
 {
 	
 	public $options = [];
@@ -28,11 +29,11 @@ class IntTelWidget extends \yii\widgets\InputWidget
     {
     	parent::init();
     
-    	$id=$this->getId();
-    	if (isset($this->clientOptions['id']))
-    		$id = $this->clientOptions['id'];
-    	else
-    		$this->clientOptions['id']=$id;
+//     	$id=$this->getId();
+//     	if (isset($this->clientOptions['id']))
+//     		$id = $this->clientOptions['id'];
+//     	else
+//     		$this->clientOptions['id']=$id;
     
     		$this->options = ArrayHelper::merge([
     				'class' => 'form-control'
