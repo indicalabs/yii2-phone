@@ -16,7 +16,7 @@ use yii\web\AssetBundle;
  * @time 09:00am
  * @see https://github.com/twitter/typeahead.js
  */
-class IntTelWidget extends \yii\widgets\InputWidget
+class IntlTelWidget extends yii\bootstrap\InputWidget
 {
 	
 	public $options = [];
@@ -28,29 +28,23 @@ class IntTelWidget extends \yii\widgets\InputWidget
     {
     	parent::init();
     
-//     	$id=$this->getId();
-//     	if (isset($this->clientOptions['id']))
-//     		$id = $this->clientOptions['id'];
-//     	else
-//     		$this->clientOptions['id']=$id;
-    
-    		$this->options = ArrayHelper::merge([
+    	$this->options = ArrayHelper::merge([
     				'class' => 'form-control'
     		], $this->options);
-    		$this->clientOptions = ArrayHelper::merge([
+    		
+    	$this->clientOptions = ArrayHelper::merge([
     				'defaultCountry'     => 'auto',
     				'numberType'         => 'MOBILE',
     				'preferredCountries' => ['cn', 'us'],
     				'responsiveDropdown' => true,
     		], $this->clientOptions);
-    		$this->registerAssetBundle();
-    		$this->clientOptions['utilsScript'] = $this->_assetBundle->baseUrl . '/lib/libphonenumber/build/utils.js';
-    		$this->registerScript();
-    
+    	$this->registerAssetBundle();
+    	$this->clientOptions['utilsScript'] = $this->_assetBundle->baseUrl . '/lib/libphonenumber/build/utils.js';
     }
     
     public function run()
     {
+    	$this->registerPlugin('intlTelInput');
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
@@ -58,18 +52,9 @@ class IntTelWidget extends \yii\widgets\InputWidget
         }
     }
 
-    public function registerScript()
-    {
-        $clientOptions = Json::encode($this->clientOptions);
-        $js = <<<EOD
-$('#{$this->options['id']}').intlTelInput({$clientOptions});
-EOD;
-        $this->getView()->registerJs($js);
-    }
-    
     public function registerAssetBundle()
     {
-    	$this->_assetBundle = IntTelAsset::register($this->getView());
+    	$this->_assetBundle = IntlTelAsset::register($this->getView());
     }
     
     
