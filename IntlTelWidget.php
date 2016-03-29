@@ -3,11 +3,11 @@
 namespace indicalabs\phone;
 
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\web\AssetBundle;
+
 /**
- * Class Phone
+ * Class IntlTelWidget
  
  *
  * @author Venu Narukulla <venu.narukulla@gmail.com>
