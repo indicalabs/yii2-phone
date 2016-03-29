@@ -15,14 +15,14 @@ class IntTelAsset extends \yii\web\AssetBundle
 {
 	public $sourcePath = '@bower/intl-tel-input';
 	public $js = [
-		'build/js/intlTelInput.min.js'
+			'build/js/intlTelInput.min.js',
 	];
 	public $css = [
-			'build/css/intlTelInput.css'
+			'build/css/intlTelInput.css',
 	];
 
 	public $depends = [
         'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset'
+        'yii\bootstrap\BootstrapAsset',
 	];
 }

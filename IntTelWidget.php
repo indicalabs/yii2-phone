@@ -4,7 +4,6 @@ namespace indicalabs\phone;
 
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\jui\InputWidget;
 use yii\helpers\ArrayHelper;
 use yii\web\AssetBundle;
 /**
@@ -17,7 +16,7 @@ use yii\web\AssetBundle;
  * @time 09:00am
  * @see https://github.com/twitter/typeahead.js
  */
-class IntTelWidget extends yii\widgets\InputWidget
+class IntTelWidget extends \yii\widgets\InputWidget
 {
 	
 	public $options = [];
