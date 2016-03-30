@@ -2,9 +2,9 @@
 
 namespace indicalabs\phone;
 
+use yii\widgets\InputWidget;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use yii\web\AssetBundle;
 
 /**
  * Class IntlTelWidget
@@ -16,13 +16,11 @@ use yii\web\AssetBundle;
  * @time 09:00am
  * @see https://github.com/twitter/typeahead.js
  */
-class IntlTelWidget extends yii\bootstrap\InputWidget
+class IntlTelWidget extends InputWidget
 {
 	
 	public $options = [];
 	public $clientOptions = [];
-
-	private $_assetBundle;
 	
     public function init()
     {
@@ -38,8 +36,6 @@ class IntlTelWidget extends yii\bootstrap\InputWidget
     				'preferredCountries' => ['cn', 'us'],
     				'responsiveDropdown' => true,
     		], $this->clientOptions);
-    	$this->registerAssetBundle();
-    	$this->clientOptions['utilsScript'] = $this->_assetBundle->baseUrl . '/lib/libphonenumber/build/utils.js';
     }
     
     public function run()
@@ -50,23 +46,21 @@ class IntlTelWidget extends yii\bootstrap\InputWidget
         } else {
             return Html::textInput($this->name, $this->value, $this->options);
         }
+        $this->registerPlugin();
     }
 
-    public function registerAssetBundle()
+    /**
+     * Registers MultiSelect Bootstrap plugin and the related events
+     */
+    protected function registerPlugin()
     {
-    	$this->_assetBundle = IntlTelAsset::register($this->getView());
+    	$view = $this->getView();
+    	IntlTelAsset::register($view);
+    	$id = $this->options['id'];
+    	$options = $this->clientOptions !== false && !empty($this->clientOptions)
+    	? Json::encode($this->clientOptions)
+    	: '';
+    	$js = "jQuery('#$id').intlTelInput($options);";
+    	$view->registerJs($js);
     }
-    
-    
-    public function getAssetBundle()
-    {
-    	if (!($this->_assetBundle instanceof AssetBundle)) {
-    		$this->registerAssetBundle();
-    	}
-    	return $this->_assetBundle;
-    }
- 
 }
-
-
-
