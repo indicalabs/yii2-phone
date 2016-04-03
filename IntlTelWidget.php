@@ -10,6 +10,13 @@ use yii\helpers\Json;
 /**
  * Class IntlTelWidget
  
+ * Usage:
+ * <?= $form->field($model, 'mobile_number')->widget(indicalabs\phone\IntlTelWidget::className(),[
+ *												'clientOptions' => [
+ *															'initialCountry' => 'in',
+ *														]		
+ *											]);  ?>
+ *
  *
  * @author Venu Narukulla <venu.narukulla@gmail.com>
  * @link 
@@ -27,16 +34,17 @@ class IntlTelWidget extends InputWidget
     {
     	parent::init();
     
-    	$this->options = ArrayHelper::merge([
-    				'class' => 'form-control'
-    		], $this->options);
-    		
     	$this->clientOptions = ArrayHelper::merge([
+    				'class' => 'form-control',
     				'defaultCountry'     => 'auto',
-    				'numberType'         => 'MOBILE',
-    				'preferredCountries' => ['in', 'us','uk'],
+    				'numberType'         => 'MOBILE', //FIXED_LINE
+    			'separateDialCode' => 'true',
+    			
+    				'preferredCountries' => ['in', 'us','gb'],
     				'responsiveDropdown' => true,
     		], $this->clientOptions);
+    	
+    	$this->options = ArrayHelper::merge($this->options,$this->clientOptions);
     }
     
     public function run()
