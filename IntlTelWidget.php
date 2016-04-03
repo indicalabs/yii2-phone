@@ -34,14 +34,14 @@ class IntlTelWidget extends InputWidget
     	$this->clientOptions = ArrayHelper::merge([
     				'defaultCountry'     => 'auto',
     				'numberType'         => 'MOBILE',
-    				'preferredCountries' => ['cn', 'us'],
+    				'preferredCountries' => ['in', 'us','uk'],
     				'responsiveDropdown' => true,
     		], $this->clientOptions);
     }
     
     public function run()
     {
-    	$this->registerPlugin('intlTelInput');
+    	//$this->registerPlugin('intlTelInput');
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
