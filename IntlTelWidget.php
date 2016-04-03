@@ -41,13 +41,12 @@ class IntlTelWidget extends InputWidget
     
     public function run()
     {
-    	//$this->registerPlugin('intlTelInput');
+    	$this->registerPlugin('intlTelInput');
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
             return Html::textInput($this->name, $this->value, $this->options);
         }
-        $this->registerPlugin();
     }
 
     /**
