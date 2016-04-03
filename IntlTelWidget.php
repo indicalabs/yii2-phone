@@ -3,8 +3,9 @@
 namespace indicalabs\phone;
 
 use yii\widgets\InputWidget;
-use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Json;
 
 /**
  * Class IntlTelWidget
