@@ -28,4 +28,8 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \indicalabs\phone\IntTelWidget::widget(); ?>```
+<?= $form->field($model, 'mobile_number')->widget(indicalabs\phone\IntlTelWidget::className(),[
+												'clientOptions' => [
+															'initialCountry' => 'us',
+														]		
+											]);  ?>```
