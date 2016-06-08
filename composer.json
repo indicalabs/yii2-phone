@@ -11,12 +11,17 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": ">=2.0.4",
+        "yiisoft/yii2": ">=2.0.8",
         "bower-asset/intl-tel-input": ">=8.4.7"
     },
     "autoload": {
         "psr-4": {
             "indicalabs\\phone\\": ""
         }
-    }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
 }
