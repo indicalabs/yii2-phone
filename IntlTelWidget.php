@@ -33,15 +33,22 @@ class IntlTelWidget extends InputWidget
     public function init()
     {
     	parent::init();
-    
+
+    	$id=$this->getId();
+    	if (isset($this->clientOptions['id']))
+    		$id = $this->clientOptions['id'];
+    		else
+    			$this->clientOptions['id']=$id;
+    			
     	$this->clientOptions = ArrayHelper::merge([
     				'class' => 'form-control',
     				'defaultCountry'     => 'auto',
     				'numberType'         => 'MOBILE', //FIXED_LINE
-    			'separateDialCode' => 'true',
-    			
+    				//'separateDialCode' => 'true',
+    				'autoHideDialCode' => 'true',
+    				'nationalMode' => false,
     				'preferredCountries' => ['in', 'us','gb'],
-    				'responsiveDropdown' => true,
+	    			//'responsiveDropdown' => true,
     		], $this->clientOptions);
     	
     	$this->options = ArrayHelper::merge($this->options,$this->clientOptions);
@@ -65,10 +72,12 @@ class IntlTelWidget extends InputWidget
     	$view = $this->getView();
     	IntlTelAsset::register($view);
     	$id = $this->options['id'];
+    	
     	$options = $this->clientOptions !== false && !empty($this->clientOptions)
     	? Json::encode($this->clientOptions)
     	: '';
-    	$js = "jQuery('#$id').intlTelInput($options);";
+    	$js = "jQuery('#".$id."').intlTelInput($options);";
     	$view->registerJs($js);
+    	
     }
 }

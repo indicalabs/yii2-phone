@@ -19,15 +19,17 @@ class IntlTelAsset extends AssetBundle
 	
 	public $js = [
 			'build/js/utils.js',
-			'build/js/intlTelInput.min.js',
+ 			'build/js/intlTelInput.min.js',
+//			'build/js/intlTelInput.js',
 	];
 	
 	public $css = [
 			'build/css/intlTelInput.css',
 	];
-
+	public $img = [
+			'build/img/flags.png',
+	];
 	public $depends = [
-        'yii\web\JqueryAsset',
-        'yii\bootstrap\BootstrapAsset',
+			'yii\web\JqueryAsset',
 	];
 }

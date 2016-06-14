@@ -40,11 +40,15 @@ class IntlTelNumberValidator extends Validator
 	
 		ValidationAsset::register($view);
 		
-		    return <<<JS
-	        var telInput = $('#$formName-$attribute');
-						if (!telInput.intlTelInput('isValidNumber')) {
-							messages.push($options.message);
-						}
-JS;
+		$view->registerJs(<<<JS
+(function(){
+    var telInput = $('#$formName-$attribute');
+	if (!telInput.intlTelInput('isValidNumber')) {
+	messages.push($options.message);
+		   }
+})();
+JS
+		, \yii\web\View::POS_LOAD);
+		 
 	}
 }
