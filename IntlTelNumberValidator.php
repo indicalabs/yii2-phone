@@ -27,6 +27,11 @@ class IntlTelNumberValidator extends Validator
 
 	public function clientValidateAttribute($model, $attribute, $view)
 	{
+
+		$className = explode('\\', $model->className());
+		$className = strtolower(end($className));
+		$formName = strtolower($model->formName());
+		
 		$label = $model->getAttributeLabel($attribute);
 		
 		$options = [
@@ -41,14 +46,32 @@ class IntlTelNumberValidator extends Validator
 		ValidationAsset::register($view);
 		
 		$view->registerJs(<<<JS
-(function(){
-    var telInput = $('#$formName-$attribute');
-	if (!telInput.intlTelInput('isValidNumber')) {
+(function(){				
+var telInput = $("#$formName-$attribute");
+if (!telInput.intlTelInput('isValidNumber')) {
 	messages.push($options.message);
-		   }
+}
+		var intlNumber = telInput.intlTelInput("getNumber");
+		telInput.value = intlNumber;
+		
+		document.getElementById("$className-$attribute").value = intlNumber;
+ 		document.getElementById("$className-$attribute").disabled = false;
+		
+		//var countryData = $.fn.intlTelInput.getCountryData();
+		//console.log(countryData);
 })();
 JS
 		, \yii\web\View::POS_LOAD);
+		
+// 		$view->registerJs(<<<JS
+// (function(){
+//     var telInput = $('#$formName-$attribute');
+// 	if (!telInput.intlTelInput('isValidNumber')) {
+// 	messages.push($options.message);
+// 		   }
+// })();
+// JS
+// 		, \yii\web\View::POS_LOAD);
 		 
 	}
 }

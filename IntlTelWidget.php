@@ -47,6 +47,7 @@ class IntlTelWidget extends InputWidget
     				//'separateDialCode' => 'true',
     				'autoHideDialCode' => 'true',
     				'nationalMode' => false,
+    			'dropdownContainer' => 'body',
     				'preferredCountries' => ['in', 'us','gb'],
 	    			//'responsiveDropdown' => true,
     		], $this->clientOptions);
