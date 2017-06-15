@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": ">=2.0.9",
-        "bower-asset/intl-tel-input": ">=9.0.1"
+        "yiisoft/yii2": ">=2.0.12",
+        "npm-asset/intl-tel-input": ">=11.0.14"
     },
     "autoload": {
         "psr-4": {
