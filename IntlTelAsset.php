@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 class IntlTelAsset extends AssetBundle
 {
-	public $sourcePath = '@bower/intl-tel-input';
+	public $sourcePath = '@npm/intl-tel-input';
 	
 	public $js = [
 			'build/js/utils.js',
