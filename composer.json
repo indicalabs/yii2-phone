@@ -15,8 +15,8 @@
 		}
 	],
 	"require" : {
-		"yiisoft/yii2" : "~2.0.14",
-		"npm-asset/intl-tel-input" : "12.1.9"
+		"yiisoft/yii2" : "2.0.40",
+		"npm-asset/intl-tel-input" : "17.0.12"
 	},
 	"autoload" : {
 		"psr-4" : {
