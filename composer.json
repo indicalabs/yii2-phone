@@ -15,7 +15,7 @@
 		}
 	],
 	"require" : {
-		"yiisoft/yii2" : "2.0.40",
+		"yiisoft/yii2" : "2.0.49",
 		"npm-asset/intl-tel-input" : "17.0.12"
 	},
 	"autoload" : {
